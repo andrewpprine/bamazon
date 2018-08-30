@@ -14,4 +14,8 @@ connection.connect(function(err){
        throw err; 
    }
    else{
+       console.log("connected as " + connection.threadId);
+       runApp();
+   }
+});
        
