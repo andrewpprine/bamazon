@@ -8,3 +8,10 @@ var connection = mysql.createConnection({
    password: "hellosql",
    database: "bamazon_db"
 });
+
+connection.connect(function(err){
+   if(err){
+       throw err; 
+   }
+   else{
+       
