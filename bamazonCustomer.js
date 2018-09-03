@@ -33,7 +33,7 @@ function promptForItem(inventory){
          {
             type: "input",
             name: "choice",
-            message: "What is the ID of the item you want to purchase? [quit with Q]",
+            message: "What is the ID of the item you want to purchase? [type Q to quit]",
             validate: function(val){
                return !isNaN(val)||val.toLowerCase()==="q"
             }
@@ -57,7 +57,22 @@ function promptForItem(inventory){
  }
 
  // Prompt the customer for a product quantity
-function promptCustomerForQuantity(product) {}
+function promptCustomerForQuantity(product){
+   inquirer.prompt([
+      {
+         type: "input",
+         name: "choice",
+         message: "How many do you want to purchase? [type Q to quit]",
+         validate: function(val){
+            return ~isNaN(val)||val.toLowerCase()==="q"
+         }
+      }
+   ]).then(function(val){
+      checkIfShouldExit(val.choice);
+      var choiceQuantity = parseInt(val.choice);
+      
+   })
+}
 
 
 // Purchase the desired quantity of the desired item
