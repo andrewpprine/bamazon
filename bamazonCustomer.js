@@ -82,7 +82,6 @@ function promptForQuantity(product){
    })
 }
 
-
 // Purchase the desired quantity of the desired item
 function makePurchase(product, quantity) {
    connection.query("UPDATE products SET stock_quantity = stock_quantity - ? WHERE item_id = ?", function(err,response){
@@ -91,10 +90,6 @@ function makePurchase(product, quantity) {
       loadProducts();
    });
 }
-
-
-
-
 
 
 
