@@ -28,8 +28,7 @@ function loadProducts(){
 }
 
 function promptForItem(inventory){
-   inquirer
-      .prompt([
+   inquirer.prompt([
          {
             type: "input",
             name: "choice",
@@ -71,30 +70,27 @@ function promptForQuantity(product){
       checkIfShouldExit(val.choice);
       var choiceQuantity = parseInt(val.choice);
 
+      if (val >= val.stock_quantity) {
+         //if availble, make purchase
+         makePurchase();
+      }
+      else { // Inform customer that there is not enough available.
+         console.log("\nNot enough available to fulfill order.");
+         promptForQuantity();
+      }
+
    })
 }
 
 
 // Purchase the desired quantity of the desired item
 function makePurchase(product, quantity) {
-   connection.query(
-     "UPDATE products SET stock_quantity = stock_quantity - ? WHERE item_id = ?",
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+   connection.query("UPDATE products SET stock_quantity = stock_quantity - ? WHERE item_id = ?", function(err,response){
+      if(err) throw err;
+      console.table(response);
+      loadProducts();
+   });
+}
 
 
 
