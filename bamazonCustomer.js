@@ -45,8 +45,8 @@ function promptForItem(inventory){
 
          // If there is a product with the id the user chose, prompt the customer for a desired quantity
          if (product) {
-            // Pass the chosen product to promptCustomerForQuantity
-            promptCustomerForQuantity(product);
+            // Pass the chosen product to promptForQuantity
+            promptForQuantity(product);
          }
          else {
             // Otherwise let them know the item is not in the inventory, re-run loadProducts
@@ -57,7 +57,7 @@ function promptForItem(inventory){
  }
 
  // Prompt the customer for a product quantity
-function promptCustomerForQuantity(product){
+function promptForQuantity(product){
    inquirer.prompt([
       {
          type: "input",
@@ -70,7 +70,7 @@ function promptCustomerForQuantity(product){
    ]).then(function(val){
       checkIfShouldExit(val.choice);
       var choiceQuantity = parseInt(val.choice);
-      
+
    })
 }
 
